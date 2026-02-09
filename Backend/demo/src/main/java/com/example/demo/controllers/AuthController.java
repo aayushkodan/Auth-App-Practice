@@ -38,8 +38,9 @@ public class AuthController {
     }
 
     @PostMapping("login")
-    public ResponseEntity<TokenResponse> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response){
-        Authentication authentication = authenticate(loginRequest)
+    public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response){
+        Authentication authentication = authenticate(loginRequest);
+        return ResponseEntity.ok().body(null);
     }
 
     private Authentication authenticate(LoginRequest loginRequest) {
